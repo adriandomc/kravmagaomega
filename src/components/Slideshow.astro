@@ -1,16 +1,26 @@
 ---
-const { images = [], positions = [] } = Astro.props;
+const { images = [], positions = [], height = '350px' } = Astro.props;
 ---
 
 <!-- Swiper CSS desde CDN -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-<div class="w-full h-[350px]">
+<!-- Alpine.js para el modal -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+<div x-data="{ showModal: false, modalImg: '' }" class="w-full" style={`height: ${height};`}>
   <div id="astro-swiper" class="swiper h-full">
     <div class="swiper-wrapper">
       {images.map((image: string, index: number) => (
         <div class="swiper-slide flex items-center justify-center h-full">
-          <img src={image} alt={`Slide ${index + 1}`} class="object-cover w-full h-full" loading="lazy" style={`object-position: ${positions[index] || 'center center'};`} />
+          <img 
+            src={image} 
+            alt={`Slide ${index + 1}`} 
+            class="object-cover w-full h-full cursor-zoom-in" 
+            loading="lazy" 
+            style={`object-position: ${positions[index] || 'center center'};`} 
+            x-on:click={`showModal = true; modalImg = '${image}'`}
+          />
         </div>
       ))}
     </div>
@@ -18,7 +28,24 @@ const { images = [], positions = [] } = Astro.props;
     <div class="swiper-button-prev" style="color: white"></div>
     <div class="swiper-button-next" style="color: white"></div>
   </div>
+
+  <!-- Modal -->
+  <div 
+    x-show="showModal" 
+    x-transition:enter="transition ease-out duration-200" 
+    x-transition:enter-start="opacity-0" 
+    x-transition:enter-end="opacity-100" 
+    x-transition:leave="transition ease-in duration-150" 
+    x-transition:leave-start="opacity-100" 
+    x-transition:leave-end="opacity-0" 
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90" 
+    style="display: none;"
+    x-on:click.self="showModal = false"
+  >
+    <img :src="modalImg" class="max-w-full max-h-[90vh] rounded shadow-lg border-4 border-white" alt="Imagen ampliada" />
+  </div>
 </div>
+<p class="text-gray-400 text-center">Haz click en la imagen para ver en tamaño completo</p>
 
 <script>
   function loadSwiperAndInit() {

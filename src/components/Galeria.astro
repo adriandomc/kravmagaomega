@@ -2,9 +2,19 @@
 import Slideshow from './Slideshow.astro';
 
 const images = [
-  '/slide1_a.jpeg',
-  '/slide1_b.jpeg',
-  '/project5a.jpg',
+  '/img/slide2_a.jpg',
+  '/img/slide2_b.jpg',
+  '/img/slide2_c.jpg',
+  '/img/slide2_d.jpg',
+  '/img/slide2_e.jpg'
+];
+
+const positions = [
+  '50% 0%', 
+  '', 
+  '', 
+  '50% 30%', 
+  ''
 ];
 ---
 
@@ -12,7 +22,7 @@ const images = [
   <div class="container mx-auto px-4 max-w-4xl">
     <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Galería</h2>
     <div class="rounded-lg overflow-hidden shadow-lg">
-      <Slideshow images={images} />
+      <Slideshow images={images} positions={positions} height="480px" />
     </div>
   </div>
 </section>
