@@ -1,5 +1,5 @@
 ---
-const { images = [] } = Astro.props;
+const { images = [], positions = [] } = Astro.props;
 ---
 
 <!-- Swiper CSS desde CDN -->
@@ -10,7 +10,7 @@ const { images = [] } = Astro.props;
     <div class="swiper-wrapper">
       {images.map((image: string, index: number) => (
         <div class="swiper-slide flex items-center justify-center h-full">
-          <img src={image} alt={`Slide ${index + 1}`} class="object-cover w-full h-full" loading="lazy" />
+          <img src={image} alt={`Slide ${index + 1}`} class="object-cover w-full h-full" loading="lazy" style={`object-position: ${positions[index] || 'center center'};`} />
         </div>
       ))}
     </div>
