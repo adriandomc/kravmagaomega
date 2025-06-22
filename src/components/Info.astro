@@ -1,0 +1,31 @@
+---
+import Slideshow from './Slideshow.astro';
+
+const images = [
+  '/img/slide1_a.jpeg',
+  '/img/slide1_b.jpg',
+  '/img/slide1_c.jpg',
+];
+---
+
+<section id="info" class="py-16 bg-white text-gray-800">
+  <div class="container mx-auto px-4 max-w-5xl">
+    <div class="flex flex-col md:flex-row items-center gap-8">
+      <div class="md:w-1/2">
+        <h2 class="text-3xl font-bold mb-4 text-center md:text-left">¿Quiénes somos?</h2>
+        <p class="text-lg mb-4 text-center md:text-left">
+          Somos la mejor técnica de artes marciales mixtas. Kick Boxing, Jiu Jitsu, Karate, Wing Chun y Krav Maga. Sé un verdadero guerrero invencible. Además de constantes seminarios de JKD, Muay Thai, Sambo, entre otros. Con maestros reconocidos a nivel nacional y mundial.
+        </p>
+        <ul class="list-disc list-inside text-lg space-y-2">
+          <li>Instructores certificados y con experiencia internacional</li>
+          <li>Ambiente familiar y seguro</li>
+          <li>Clases para niños, jóvenes y adultos</li>
+          <li>Énfasis en valores, respeto y disciplina</li>
+        </ul>
+      </div>
+      <div class="md:w-1/2 w-full max-h-[350px] h-full">
+        <Slideshow images={images} />
+      </div>
+    </div>
+  </div>
+</section>

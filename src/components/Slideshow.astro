@@ -1,0 +1,55 @@
+---
+const { images = [] } = Astro.props;
+---
+
+<!-- Swiper CSS desde CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<div class="w-full h-[350px]">
+  <div id="astro-swiper" class="swiper h-full">
+    <div class="swiper-wrapper">
+      {images.map((image: string, index: number) => (
+        <div class="swiper-slide flex items-center justify-center h-full">
+          <img src={image} alt={`Slide ${index + 1}`} class="object-cover w-full h-full" loading="lazy" />
+        </div>
+      ))}
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev" style="color: white"></div>
+    <div class="swiper-button-next" style="color: white"></div>
+  </div>
+</div>
+
+<script>
+  function loadSwiperAndInit() {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
+    script.onload = function () {
+      new Swiper('#astro-swiper', {
+        loop: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        autoplay: {
+          delay: 3500,
+          disableOnInteraction: false,
+        },
+        slidesPerView: 1,
+        spaceBetween: 0,
+        centeredSlides: true,
+        speed: 700,
+      });
+    };
+    document.head.appendChild(script);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadSwiperAndInit);
+  } else {
+    loadSwiperAndInit();
+  }
+</script>
