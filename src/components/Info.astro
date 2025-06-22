@@ -5,6 +5,17 @@ const images = [
   '/img/slide1_a.jpeg',
   '/img/slide1_b.jpg',
   '/img/slide1_c.jpg',
+  '/img/slide1_d.jpg',
+  '/img/slide1_e.jpg'
+];
+
+// Arreglo de posiciones para cada imagen (puedes ajustar los valores a tu gusto)
+const positions = [
+  '', 
+  '', 
+  '', 
+  '', 
+  '22% 38%'
 ];
 ---
 
@@ -24,7 +35,7 @@ const images = [
         </ul>
       </div>
       <div class="md:w-1/2 w-full max-h-[350px] h-full">
-        <Slideshow images={images} />
+        <Slideshow images={images} positions={positions} />
       </div>
     </div>
   </div>
