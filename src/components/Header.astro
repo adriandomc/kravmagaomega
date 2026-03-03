@@ -1,14 +1,3 @@
----
----
-
-<!--
-  Menú hamburguesa funcional para Astro (sin React ni JSX):
-  - Usa Alpine.js para el estado del menú en móviles.
-  - Alpine.js funciona bien con Astro y Tailwind.
-  - Solo se usa class, no className.
--->
-
-<!-- Alpine.js CDN para manejo de estado -->
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
 <header class="bg-black text-white py-6 shadow">
@@ -38,7 +27,7 @@
           <a href="/#contacto" class="hover:text-yellow-400" @click="open = false">Contacto</a>
         </nav>
       </div>
-      <!-- Menú normal en desktop -->
+
       <nav class="hidden md:flex gap-6 text-lg">
         <a href="/" class="hover:text-yellow-400">Inicio</a>
         <a href="/importancia" class="hover:text-yellow-400">Importancia de las Artes Marciales</a>
