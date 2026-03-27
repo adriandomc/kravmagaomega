@@ -19,6 +19,7 @@
           <span class="text-lg">Menú</span>
         </button>
         <nav x-show="open" @click.away="open = false" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 flex flex-col items-center justify-center gap-8 text-2xl z-50 transition-all duration-300 md:hidden">
+          <button class="absolute top-6 right-6 text-white text-4xl focus:outline-none" @click="open = false" aria-label="Cerrar menú">&times;</button>
           <a href="/" class="hover:text-yellow-400" @click="open = false">Inicio</a>
           <a href="/importancia" class="hover:text-yellow-400" @click="open = false">Importancia de las Artes Marciales</a>
           <a href="/#info" class="hover:text-yellow-400" @click="open = false">Quiénes somos</a>
